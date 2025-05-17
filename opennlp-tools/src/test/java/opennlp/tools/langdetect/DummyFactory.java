@@ -1,0 +1,93 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package opennlp.tools.langdetect;
+
+import java.io.Serial;
+import java.util.ArrayList;
+import java.util.List;
+
+import opennlp.tools.ngram.NGramModel;
+import opennlp.tools.tokenize.SimpleTokenizer;
+import opennlp.tools.util.StringList;
+import opennlp.tools.util.normalizer.CharSequenceNormalizer;
+
+public class DummyFactory extends LanguageDetectorFactory {
+
+  public DummyFactory() {
+    super();
+  }
+
+  @Override
+  public void init() {
+    super.init();
+  }
+
+  @Override
+  public LanguageDetectorContextGenerator getContextGenerator() {
+    return new MyContextGenerator(2, 5, new UpperCaseNormalizer());
+  }
+
+  private static class UpperCaseNormalizer implements CharSequenceNormalizer {
+
+    @Serial
+    private static final long serialVersionUID = 589425364183582853L;
+
+    @Override
+    public CharSequence normalize(CharSequence text) {
+      return text.toString().toUpperCase();
+    }
+  }
+
+  private static class MyContextGenerator extends DefaultLanguageDetectorContextGenerator {
+
+    @Serial
+    private static final long serialVersionUID = 5737572653101696876L;
+
+    public MyContextGenerator(int min, int max, CharSequenceNormalizer... normalizers) {
+      super(min, max, normalizers);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public <T extends CharSequence> T[] getContext(CharSequence document) {
+      CharSequence[] superContext = super.getContext(document);
+
+      List<String> context = new ArrayList<>(superContext.length);
+      for (CharSequence cs : superContext) {
+        context.add(cs.toString());
+      }
+
+      document = this.normalizer.normalize(document);
+
+      SimpleTokenizer tokenizer = SimpleTokenizer.INSTANCE;
+      String[] words = tokenizer.tokenize(document.toString());
+      NGramModel tokenNgramModel = new NGramModel();
+      if (words.length > 0) {
+        tokenNgramModel.add(new StringList(words), 1, 3);
+
+        for (StringList tokenList : tokenNgramModel) {
+          if (tokenList.size() > 0) {
+            context.add("tg=" + tokenList);
+          }
+        }
+      }
+
+      return (T[]) context.toArray(new String[0]);
+    }
+  }
+}

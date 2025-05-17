@@ -1,0 +1,42 @@
+################
+Sentences_DE.txt:
+- Sigmund Freud - Die Traumdeutung
+- chapter VI: Die Traumarbeit | section A "Die Verdichtungsarbeit"
+available here: https://www.projekt-gutenberg.org/freud/traumdeu/chap006.html
+################
+Sentences_ES.txt:
+- Sigmund Freud - La interpretación de los sueños
+- chapter VI: La elaboración onírica | section A "La labor de condensación"
+available here:
+https://ia600607.us.archive.org/9/items/El_Inconsciente/Freud_interpretacion_de_los_Suenios.pdf#page170
+################
+Sentences_FR.txt:
+- Sigmund Freud - L’interprétation du rêve
+- chapter VI: Le travail des rêves | section A "LE TRAVAIL DE CONDENSATION"
+available here:
+https://ia801803.us.archive.org/3/items/linterpretation-du-reve-pdfdrive/L%27interpr%C3%A9tation%20du%20r%C3%AAve%20%28%20PDFDrive%20%29.pdf
+################
+Sentences_IT.txt:
+- Gabriele Vaccari - training-set.txt provided in OpenNLP-1163
+- Reduced and cleaned sample of the first ~500 lines / sentences
+available here:
+https://issues.apache.org/jira/browse/OPENNLP-1163
+################
+Sentences_NL.txt:
+- Sigmund Freud - De interpretatie van dromen
+- hoofdstuk VI: Het droomwerk | sectie A "Het condensatiewerk".
+automatically translated from the German version, see Sentences_DE.txt
+################
+Sentences_PL.txt:
+- Zygmunt Freuda - Interpretacja marzeń sennych
+- Rozdział VI: Praca nad snem | sekcja A "Praca nad kondensacją"
+automatically translated from the German version, see Sentences_DE.txt
+################
+Sentences_PT.txt:
+- Adolfo Ferreira Caminha - No Paiz dos Yankees
+available here:
+https://www.gutenberg.org/ebooks/24190
+- Eça de Queirós - A Cidade e as Serras
+available here:
+https://www.gutenberg.org/ebooks/18220
+################

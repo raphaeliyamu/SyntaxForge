@@ -1,0 +1,48 @@
+## Licensed under the terms of http://www.apache.org/licenses/LICENSE-2.0
+
+## See https://s.apache.org/asfyaml
+
+github:
+  description: "Apache OpenNLP"
+  homepage: https://opennlp.apache.org/
+  protected_branches:
+    # Prevent force pushes to primary branches
+    main:
+      required_pull_request_reviews:
+        dismiss_stale_reviews: false
+        require_code_owner_reviews: false
+        required_approving_review_count: 1
+  autolink_jira:
+    - OPENNLP
+  custom_subjects:
+    new_pr: "[PR] {title} ({repository})"
+    close_pr: "Re: [PR] {title} ({repository})"
+    comment_pr: "Re: [PR] {title} ({repository})"
+    diffcomment: "Re: [PR] {title} ({repository})"
+    merge_pr: "Re: [PR] {title} ({repository})"
+    new_issue: "[I] {title} ({repository})"
+    comment_issue: "Re: [I] {title} ({repository})"
+    close_issue: "Re: [I] {title} ({repository})"
+    catchall: "[GH] {title} ({repository})"
+    new_discussion: "[D] {title} ({repository})"
+    edit_discussion: "Re: [D] {title} ({repository})"
+    close_discussion: "Re: [D] {title} ({repository})"
+    close_discussion_with_comment: "Re: [D] {title} ({repository})"
+    reopen_discussion: "Re: [D] {title} ({repository})"
+    new_comment_discussion: "Re: [D] {title} ({repository})"
+    edit_comment_discussion: "Re: [D] {title} ({repository})"
+    delete_comment_discussion: "Re: [D] {title} ({repository})"
+  labels:
+    - apache
+    - opennlp
+    - nlp
+    - languagetechnology
+    - textprocessing
+    - compling
+
+notifications:
+  commits:      commits@opennlp.apache.org
+  issues:       dev@opennlp.apache.org
+  pullrequests_status: dev@opennlp.apache.org
+  pullrequests_comment: dev@opennlp.apache.org
+  jira_options: link worklog
